@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo 'Sonar Scanner'
                	//def scannerHome = tool 'SonarQube Scanner 3.0'
-			    withSonarQubeEnv('SonarQube Server') {
+			    withSonarQubeEnv('nambasonar') {
 				sh 'mvn clean install sonar:sonar'
 			    }
             }
