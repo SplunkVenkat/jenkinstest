@@ -17,7 +17,6 @@ pipeline {
                 echo 'Sonar Scanner'
                	//def scannerHome = tool 'SonarQube Scanner 3.0'
 			    withSonarQubeEnv('SonarQube Server') {
-			    	sh "${scannerHome}/bin/sonar-scanner"
 				sh 'mvn clean install sonar:sonar'
 			    }
             }
