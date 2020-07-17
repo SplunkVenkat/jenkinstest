@@ -16,7 +16,7 @@ pipeline {
             steps {
 		 script
 		    {
-	              if (env.BRANCH_NAME == "master"){
+	              if (env.BRANCH_NAME == ""){
 			      sh '''sed -i "4 a sonar.branch.name=$BRANCH_NAME" "$WORKSPACE/sonar-project.properties"'''
                               sh '''sed -i "5 a sonar.branch.target=master" $WORKSPACE/sonar-project.properties'''
 			      } else {
