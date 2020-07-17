@@ -23,7 +23,6 @@ pipeline {
 			          echo "this is not master"
                              } 
 	        sh '''cat $WORKSPACE/sonar-project.properties'''	    
-                echo "tenv.BRANCH_NAMesting"
 	        echo 'Pulling...' + env.BRANCH_NAME
 		    }
                	//def scannerHome = tool 'SonarQube Scanner 3.0'
