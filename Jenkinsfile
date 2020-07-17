@@ -17,11 +17,12 @@ pipeline {
 		 script
 		    {
 	              if (env.BRANCH_NAME == ""){
-			      sh '''sed -i "4 a sonar.branch.name=$BRANCH_NAME" "$WORKSPACE/sonar-project.properties"'''
-                              sh '''sed -i "5 a sonar.branch.target=master" $WORKSPACE/sonar-project.properties'''
+			         echo "test"
 			      } else {
 			          echo "this is not master"
                              } 
+		   sh '''sed -i "4 a sonar.branch.name=$BRANCH_NAME" "$WORKSPACE/sonar-project.properties"'''
+                   sh '''sed -i "5 a sonar.branch.target=master" $WORKSPACE/sonar-project.properties'''	    
 	        sh '''cat $WORKSPACE/sonar-project.properties'''	    
 	        echo 'Pulling...' + env.BRANCH_NAME
 		    }
