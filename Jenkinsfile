@@ -21,8 +21,9 @@ pipeline {
 			      } else {
 			      sh '''sed -i "4 a sonar.branch.name=$BRANCH_NAME" "$WORKSPACE/sonar-project.properties"'''
                               sh '''sed -i "5 a sonar.branch.target=master" $WORKSPACE/sonar-project.properties'''
-                            }
+                            } 
                 echo "testing"
+		    }
                	//def scannerHome = tool 'SonarQube Scanner 3.0'
 			   // withSonarQubeEnv('nambasonar') {
 				//sh 'mvn clean install sonar:sonar'
