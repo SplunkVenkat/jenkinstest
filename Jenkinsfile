@@ -14,8 +14,8 @@ pipeline {
          }
         stage('Sonar') {
             steps {
-               	def scannerHome = tool 'SonarQube Scanner 3.0'
-			     withSonarQubeEnv('nambasonar') {
+               	//def scannerHome = tool 'SonarQube Scanner 3.0'
+			    withSonarQubeEnv('nambasonar') {
 				sh 'mvn clean install sonar:sonar'
 			    }
             }
