@@ -6,12 +6,12 @@ pipeline {
                 echo 'Checkout'
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Clean Build'
-                sh 'mvn clean package'
-            }
-        }
+        //stage('Build') {
+            //steps {
+               // echo 'Clean Build'
+               // sh 'mvn clean package'
+           // }
+        //}
         stage('Sonar') {
             steps {
 		 script
@@ -21,7 +21,8 @@ pipeline {
 			      } else {
 			      sh '''sed -i "4 a sonar.branch.name=$BRANCH_NAME" "$WORKSPACE/sonar-project.properties"'''
                               sh '''sed -i "5 a sonar.branch.target=master" $WORKSPACE/sonar-project.properties'''
-                            } 
+                           } 
+	        sh '''cat $WORKSPACE/sonar-project.properties'''	    
                 echo "testing"
 		    }
                	//def scannerHome = tool 'SonarQube Scanner 3.0'
