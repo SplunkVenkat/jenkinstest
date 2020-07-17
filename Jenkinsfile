@@ -16,12 +16,12 @@ pipeline {
             steps {
 		 script
 		    {
-	              if (env.BRANCH_NAME != "master"){
-			      env.SONARQUBE_NAME = "nandyd"
-			      } else {
+	              if (env.BRANCH_NAME == "master"){
 			      sh '''sed -i "4 a sonar.branch.name=$BRANCH_NAME" "$WORKSPACE/sonar-project.properties"'''
                               sh '''sed -i "5 a sonar.branch.target=master" $WORKSPACE/sonar-project.properties'''
-                           } 
+			      } else {
+			          echo "this is not master"
+                             } 
 	        sh '''cat $WORKSPACE/sonar-project.properties'''	    
                 echo "testing"
 		    }
