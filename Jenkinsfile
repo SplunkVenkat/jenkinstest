@@ -23,7 +23,8 @@ pipeline {
 			          echo "this is not master"
                              } 
 	        sh '''cat $WORKSPACE/sonar-project.properties'''	    
-                echo "testing"
+                echo "tenv.BRANCH_NAMesting"
+	        echo  env.BRANCH_NAME
 		    }
                	//def scannerHome = tool 'SonarQube Scanner 3.0'
 			   // withSonarQubeEnv('nambasonar') {
