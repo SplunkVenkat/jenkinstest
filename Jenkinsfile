@@ -6,31 +6,17 @@ pipeline {
                 echo 'Checkout'
             }
         }
-        //stage('Build') {
-            //steps {
-               // echo 'Clean Build'
-               // sh 'mvn clean package'
-           // }
-        //}
+         stage('Build') {
+             steps {
+                 echo 'Clean Build'
+                 sh 'mvn clean package'
+            }
+         }
         stage('Sonar') {
             steps {
-		 script
-		    {
-	              if (env.BRANCH_NAME == ""){
-			         echo "test"
-			      } else {
-			      
-			          echo "this is not master"
-			sh '''sed -i "4 a sonar.branch.name=$BRANCH_NAME" "$WORKSPACE/sonar-project.properties"'''
-                        sh '''sed -i "5 a sonar.branch.target=master" $WORKSPACE/sonar-project.properties'''
-                             } 
-	    
-	        sh '''cat $WORKSPACE/sonar-project.properties'''	    
-	        echo 'Pulling...' + env.BRANCH_NAME
-		    }
-               	//def scannerHome = tool 'SonarQube Scanner 3.0'
-			   // withSonarQubeEnv('nambasonar') {
-				//sh 'mvn clean install sonar:sonar'
+               	def scannerHome = tool 'SonarQube Scanner 3.0'
+			     withSonarQubeEnv('nambasonar') {
+				sh 'mvn clean install sonar:sonar'
 			    }
             }
         }
